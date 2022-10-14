@@ -1,9 +1,7 @@
-# _mohorii : モホリ–_
-
+# _mohoriis Symfony_
 ___
 
-This project will be my place to share some code and project examples.
-
+This project will be my place to play around with symfony.
 I rebuild the project as symfony based composer project to use twig as template engine.
 
 Its running eiter with **docker php8-apache environment**, or with build in symfony server if you prefer. Don't you

@@ -1,0 +1,95 @@
+
+:root {
+    // Colors
+    --mo-black: #171717;
+    --mo-gray-light: #D6D6D6;
+    --mo-gray: #5D5D5D;
+    --mo-gray-dark: #272727;
+    --mo-white: #fff;
+    --mo-yellow: #FEF200;
+    --mo-primary: var(--mo-yellow);
+
+    --mo-header-height: 5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', 'Segoe UI', 'Roboto', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.header {
+    @media screen and (min-width: 992px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 66%;
+        height: var(--mo-header-height);
+
+        background-color: var(--mo-gray-dark);
+        box-shadow: 0 .5rem .75rem rgba(0, 0, 0, .25);
+
+        &-navigation {
+            padding: 0 2rem;
+        }
+
+        &-nav-link {
+            position: relative;
+            z-index: 1;
+
+            padding: .5rem;
+            margin: 0 2rem;
+
+            color: white;
+            font-weight: 700;
+            letter-spacing: .125em;
+
+            text-transform: uppercase;
+            text-decoration: none;
+
+            &:after {
+                content: '';
+                display: block;
+                z-index: -1;
+
+                position: absolute;
+                bottom: .25rem;
+                height: .25em;
+                left: .5rem;
+
+                width: calc(100% - 1rem);
+
+                background-color: var(--mo-gray);
+                opacity: .25;
+
+                transition: transform ease 180ms;
+                transform: scaleX(0);
+            }
+
+            &:hover:after {
+                transform: scaleX(1);
+            }
+
+            &[data-is__active]:after {
+                background-color: var(--mo-primary);
+                opacity: 1;
+
+                transform: scaleX(1);
+            }
+        }
+    }
+}
+
+@import "components/hero";

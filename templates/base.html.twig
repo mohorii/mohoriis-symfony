@@ -2,11 +2,12 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="author">
-    <title>Moritz Preuß | {% block page_title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>mohoriis Symfony :: {% block page_title %}{% endblock %}</title>
     <meta name="description" content="{% block page_description %}Ein kleines Web-Projekt.{% endblock %}">
 
-    <link rel="apple-touch-icon" sizes="180x180" href="./build/images/favicon/apple-touch-icon.png'">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('build/images/favicon/apple-touch-icon.png') }}">
     <link rel="icon" type="image/png" sizes="32x32" href=".{{ asset('build/images/favicon/favicon-32x32.png') }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/images/favicon/favicon-16x16.png') }}">
     <link rel="manifest" href="{{ asset('build/images/favicon/site.webmanifest') }}">
@@ -20,7 +21,31 @@
     {% endblock %}
 </head>
 <body>
-{% block hero %}{% endblock %}
+{% block navigation %}
+    <nav class="header">
+        <a class="header-nav-link" {% if (app.request.attributes.get('_route') == 'home') %}data-is__active{% endif %} href="{{ path("home") }}">Home</a>
+        <a class="header-nav-link" {% if (app.request.attributes.get('_route') == 'calculator') %}data-is__active{% endif %} href="{{ path("calculator") }}">Calculator</a>
+
+    </nav>
+{% endblock %}
+{% block hero %}
+    <div class="hero">
+        <div class="hero-brand">
+            <a href="/" class="hero-brand-link">{% block heroBrand %}モホリ—。{% endblock %}</a>
+        </div>
+        <div class="hero-image-holder">
+            <img class="hero-image" src="{% block heroImage %}./build/images/dummy-images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpg{% endblock %}" alt=""/>
+        </div>
+        <hgroup class="hero-headlines">
+            <p class="hero-tagline">{% block heroTagline %}My name is{% endblock %}
+                <span class="is--big">{% block heroTaglineBig %}Moritz Preuß{% endblock %}</span></p>
+            <h1 class="hero-headline">{% block heroHeadline %}I'm a frontend developer{% endblock %}</h1>
+        </hgroup>
+        {% block heroDots %}<div class="hero-dots"></div>{% endblock %}
+    </div>
+{% endblock %}
+
+
 {% block body %}{% endblock %}
 </body>
 {% block footer %}{% endblock %}
