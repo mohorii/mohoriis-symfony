@@ -1,0 +1,71 @@
+.navbar {
+    padding: .75rem 0;
+    background-color: $gray-100;
+}
+
+.navbar-brand {
+    font-weight: 900;
+    color: $primary;
+    text-shadow: 1px 1px $black;
+    transition: $transition-base;
+    transition-property: color, text-shadow;
+
+    &:hover {
+        text-shadow: 1px 1px $primary;
+    }
+}
+
+.navbar-toggler {
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    position: relative;
+    border: none;
+
+    &:focus {
+        outline: none;
+        box-shadow: none;
+    }
+
+    &:before,
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 3rem;
+        left: 0;
+        height: 3px;
+        background-color: $primary;
+        box-shadow: 1px 1px $black;
+        transition: $transition-base;
+
+    }
+
+    &:before {
+        top: 1.125rem;
+    }
+    &:after {
+        bottom: 1.125rem;
+    }
+
+    &[aria-expanded='true'] {
+        &:before,
+        &:after {
+            background-color: $black;
+            box-shadow: 1px 1px $primary;
+            transform-origin: center;
+        }
+
+        &:before {
+            transform: rotate(45deg) translate(3px, 3px);
+        }
+
+        &:after {
+            transform: rotate(-45deg) translate(3px, -3px);
+        }
+    }
+}
+
+.navbar__nav--link {
+    font-weight: 300;
+}

@@ -1,0 +1,152 @@
+@use 'sass:map';
+
+.calculator {
+    background-color: $gray-100;
+    padding: 2rem;
+
+    &__row,
+    .product__row,
+    .quantity__row,
+    .unit__row,
+    .finish__row {
+        @include make-row();
+    }
+
+    &__col,
+    .quantity__col,
+    .unit__col,
+    .finish__col {
+        @include make-col-ready();
+    }
+
+    .product__col {
+        @include make-col-ready();
+
+        @include media-breakpoint-up(lg) {
+            @include make-col(6);
+        }
+    }
+
+    .product {
+        &__label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: $white;
+            padding: var(--bs-gutter-x);
+            margin-bottom: calc(var(--bs-gutter-x) * .5);
+            border: 2px solid transparent;
+            transition: $transition-base;
+            transition-property: border-color;
+
+            &:hover {
+                border-color: $gray-200;
+                cursor: pointer;
+            }
+        }
+
+        &__input:checked + .product__label {
+            border-color: $primary;
+        }
+
+        &__price {
+            font-size: .75rem;
+            color: $gray-500;
+        }
+
+    }
+
+    .quantity {
+        position: relative;
+
+        &__input {
+            @extend .form-control;
+            padding-left: 3.25rem;
+            font-weight: $font-weight-bold;
+            height: 4rem;
+        }
+
+        &__button {
+            @extend .btn;
+            @extend .btn-primary;
+            position: absolute;
+            width: 2.375rem;
+            height: 4rem;
+            top: 0;
+            font-weight: $font-weight-bold;
+
+            &[data-quantity-count-button="up"] {
+                right: 0;
+            }
+
+            &[data-quantity-count-button="down"] {
+                left: 0;
+            }
+        }
+
+        &__label {
+            position: absolute;
+            right: 3.25rem;
+            top: 50%;
+            bottom: auto;
+            transform: translateY(-50%);
+            font-weight: $font-weight-bold;
+        }
+    }
+
+    .unit {
+        display: inline-block;
+
+        &__label {
+            margin: var(--bs-gutter-x) 0;
+            padding: 1rem;
+            background-color: $white;
+            border: 2px solid transparent;
+
+            &:hover {
+                cursor: pointer;
+                border-color: $gray-200;
+                transition: $transition-base;
+                transition-property: border-color;
+            }
+
+        }
+
+        &__input:checked + .unit__label {
+            border-color: $primary;
+        }
+    }
+
+    .finish {
+        &__col {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        &__price {
+            font-size: $h1-font-size;
+            margin-bottom: 0;
+            border-bottom: 8px double $primary;
+            font-weight: 900;
+        }
+
+        &__label {
+            padding: 1rem;
+            background-color: $white;
+            border: 2px solid transparent;
+            transition: $transition-base;
+            transition-property: border-color;
+
+            &:hover {
+                border-color: $gray-200;
+                cursor: pointer;
+            }
+        }
+
+        &__input:checked + .finish__label {
+            border-color: $primary;
+        }
+    }
+}

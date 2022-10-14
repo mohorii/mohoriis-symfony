@@ -1,0 +1,18 @@
+.btn.btn__black,
+.btn.teaser__button {
+    @extend .btn;
+    background-color: $black;
+    border: 1px solid transparent;
+    transition-property: background-color, color, box-shadow;
+    box-shadow: 1px 1px $primary;
+    color: $white;
+    font-weight: 500;
+
+    &:hover {
+        color: $black !important;
+        border: 1px solid transparent !important;
+        background-color: $primary !important;
+        box-shadow: 1px 1px $black !important;
+    }
+
+}

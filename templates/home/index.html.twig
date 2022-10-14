@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block page_title %}Willkommen auf der Startseite.{% endblock %}
+{% block page_description %}Die Startseite dient als Website-Hub und als Einstiegspunkt{% endblock %}
+
+
+{% block hero %}
+    <div class="hero">
+        <div class="hero-image-container">
+            <img class="hero-image"
+                 src="{{ asset('build/images/dummy-images/sebastian-unrau-sp-p7uuT0tw-unsplash.jpg') }}" alt="">
+        </div>
+        <div class="hero-content">
+            <hgroup class="hero-headline-container">
+                <p class="hero-tagline">Ich bin eine Tagline</p>
+                <h1 class="hero-headline">Ich bin die Headline</h1>
+            </hgroup>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}{% endblock %}
+
+{% block footer %}<h3>FOOTER BLOCK 2</h3>{% endblock %}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author">
+    <title>Moritz Preuß | {% block page_title %}{% endblock %}</title>
+    <meta name="description" content="{% block page_description %}Ein kleines Web-Projekt.{% endblock %}">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./build/images/favicon/apple-touch-icon.png'">
+    <link rel="icon" type="image/png" sizes="32x32" href=".{{ asset('build/images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('build/images/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('build/images/favicon/site.webmanifest') }}">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+<body>
+{% block hero %}{% endblock %}
+{% block body %}{% endblock %}
+</body>
+{% block footer %}{% endblock %}
+</html>

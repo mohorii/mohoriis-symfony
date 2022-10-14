@@ -1,0 +1,129 @@
+@use 'sass:map';
+
+.inquiry {
+    background-color: $gray-100;
+    padding: 2rem;
+    margin-bottom: 4rem;
+
+    &__row,
+    .user__row,
+    .address__row,
+    .unit__row,
+    .products__row,
+    .finish__row,
+    .submit__row {
+        @include make-row();
+        justify-content: center;
+    }
+
+    &__col,
+    .user__col,
+    .address__col,
+    .unit__col,
+    .products__col,
+    .finish__col,
+    .submit__col {
+        @include make-col-ready();
+        @include media-breakpoint-up(md) {
+            @include make-col(8);
+        }
+
+        .row {
+            --bs-gutter-x: 1.5rem * .25;
+        }
+
+    }
+
+    &__group {
+        margin: calc(var(--bs-gutter-x) * .5) 0;
+
+        &.is--floating {
+            @extend .form-floating;
+        }
+    }
+
+    &__input,
+    .user__input,
+    .unit__input,
+    .address__input {
+        @extend .form-control;
+    }
+
+    .unit {
+        display: inline-block;
+
+        &__label {
+
+            padding: 1rem;
+            background-color: $white;
+            border: 2px solid transparent;
+
+            &:hover {
+                cursor: pointer;
+                border-color: $gray-200;
+                transition: $transition-base;
+                transition-property: border-color;
+            }
+
+        }
+
+        &__input:checked + .unit__label {
+            border-color: $primary;
+        }
+    }
+
+    .product {
+        position: relative;
+        margin-bottom: calc(var(--bs-gutter-x) * 1.5);
+
+
+        &__category {
+            margin-bottom: 2rem;
+        }
+
+        &__label {
+            display: flex;
+            justify-content: space-between;
+            background-color: $white;
+            padding: .25rem;
+            border: 2px solid transparent;
+            transition: $transition-base;
+            transition-property: border-color;
+
+            &:hover {
+                cursor: pointer;
+                border-color: $gray-200;
+            }
+        }
+
+        &__input:checked + .product__label {
+            border-color: $primary;
+        }
+
+        &__content {
+            display: flex;
+            align-items: center;
+        }
+
+        &__picture {
+            display: inline-block;
+        }
+
+        &__text {
+            padding-left: .5rem;
+            line-height: 1;
+        }
+
+        &__title {
+            color: $gray-700;
+            display: block;
+            font-weight: $font-weight-bold;
+            font-size: $h5-font-size;
+        }
+
+        &__price-info {
+            color: $gray-400;
+            font-size: .75rem;
+        }
+    }
+}
